@@ -242,6 +242,10 @@ export async function runClaudePrompt(
     'ANTHROPIC_SMALL_MODEL',
     'ANTHROPIC_MEDIUM_MODEL',
     'ANTHROPIC_LARGE_MODEL',
+    // Router provider keys — needed by SDK subprocesses in multi-model mode
+    'XAI_API_KEY',
+    'OPENAI_API_KEY',
+    'OPENROUTER_API_KEY',
   ];
   for (const name of passthroughVars) {
     if (process.env[name]) {

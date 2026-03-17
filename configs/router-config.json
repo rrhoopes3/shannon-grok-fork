@@ -10,9 +10,19 @@
       "name": "openai",
       "api_base_url": "https://api.openai.com/v1/chat/completions",
       "api_key": "$OPENAI_API_KEY",
-      "models": ["gpt-5.2", "gpt-5-mini"],
+      "models": [
+        "gpt-5.2",
+        "gpt-5-mini"
+      ],
       "transformer": {
-        "use": [["maxcompletiontokens", { "max_completion_tokens": 16384 }]]
+        "use": [
+          [
+            "maxcompletiontokens",
+            {
+              "max_completion_tokens": 16384
+            }
+          ]
+        ]
       }
     },
     {
@@ -23,20 +33,54 @@
         "google/gemini-3-flash-preview"
       ],
       "transformer": {
-        "use": ["openrouter"]
+        "use": [
+          "openrouter"
+        ]
       }
     },
     {
       "name": "xai",
       "api_base_url": "https://api.x.ai/v1/chat/completions",
       "api_key": "$XAI_API_KEY",
-      "models": ["grok-beta", "grok-4-1-fast-reasoning", "grok-4-1-fast-non-reasoning"],
+      "models": [
+        "grok-beta",
+        "grok-4-1-fast-reasoning",
+        "grok-4-1-fast-non-reasoning"
+      ],
       "transformer": {
-        "use": [["maxcompletiontokens", { "max_completion_tokens": 16384 }]]
+        "use": [
+          [
+            "maxcompletiontokens",
+            {
+              "max_completion_tokens": 16384
+            }
+          ]
+        ]
       }
     }
   ],
   "Router": {
     "default": "$ROUTER_DEFAULT"
-  }
+  },
+  "providers": [
+    {
+      "name": "xai",
+      "apiBase": "https://api.x.ai/v1/chat/completions",
+      "apiKey": "$XAI_API_KEY",
+      "models": [
+        "grok-beta",
+        "grok-4-1-fast-reasoning",
+        "grok-4-1-fast-non-reasoning",
+        "grok-4.2"
+      ],
+      "transformers": [
+        {
+          "name": "maxcompletiontokens",
+          "params": {
+            "max_completion_tokens": 16384
+          }
+        }
+      ]
+    }
+  ]
 }
